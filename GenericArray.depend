@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1484302327 source:c:\users\nc186016\desktop\codes\genericarray\main.c
+	<stdio.h>
+	<stdlib.h>
+	"generic_array.h"
+	"generic_ll.h"
+
+1484298549 c:\users\nc186016\desktop\codes\genericarray\generic_array.h
+	<stdio.h>
+	<stdlib.h>
+	"data_types.h"
+
+1484298530 c:\users\nc186016\desktop\codes\genericarray\data_types.h
+
+1484302548 c:\users\nc186016\desktop\codes\genericarray\generic_ll.h
+	"data_types.h"
+
