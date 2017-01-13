@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "generic_array1.h"
-#include "generic_ll1.h"
+#include "generic_array.h"
+#include "generic_ll.h"
 #include "data_types.h"
 void test_generic_array()
 {
