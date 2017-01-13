@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "generic_array1.h"
-#include "generic_ll.h"
+#include "generic_ll1.h"
 #include "data_types.h"
 void test_generic_array()
 {
@@ -36,37 +36,38 @@ void test_generic_array()
 void test_generic_ll()
 {
     printf("\nTESTING GENERIC LINKED LIST\n");
-    generic_ll_intialise();
+    node* head;
+    generic_ll_intialise(&head);
     char ch='A';
     for(int i=0; i<4; i++)
     {
-        generic_ll_insert_head(&ch,sizeof(ch));
+        generic_ll_insert_head(&head,&ch,sizeof(ch));
         ch++;
     }
 
     int t=5;
     for(int i=0; i<5; i++)
     {
-        generic_ll_insert_head(&t,sizeof(t));
+        generic_ll_insert_head(&head,&t,sizeof(t));
         t++;
     }
-    generic_ll_insert_tail(&ch,sizeof(ch));
+    generic_ll_insert_tail(&head,&ch,sizeof(ch));
 
     double d=5.6;
     for(int i=2; i<4; i++)
     {
-        generic_ll_insert_tail(&d,sizeof(d));
+        generic_ll_insert_tail(&head,&d,sizeof(d));
         d++;
     }
-    generic_ll_pop_head();
-    generic_ll_pop_head();
-    generic_ll_pop_head();
-    generic_ll_print();
+    generic_ll_pop_head(&head);
+    generic_ll_pop_head(&head);
+    generic_ll_pop_head(&head);
+    generic_ll_print(&head);
 
 }
 
 int main()
 {
-    test_generic_array();
+    test_generic_ll();
     return 0;
 }

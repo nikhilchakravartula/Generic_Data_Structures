@@ -9,15 +9,13 @@ typedef struct llnode
     struct llnode* next;
 } node;
 
-node* head,*tail;
-
-void generic_ll_intialise()
+void generic_ll_intialise(node** head)
 {
-    head=tail=NULL;
+     (*head)=NULL;
 }
 
 //insert at a particular index in the array
-void generic_ll_insert_head(void* data, int data_size)
+void generic_ll_insert_head(node** head,void* data, int data_size)
 {
     node* temp=malloc(sizeof(node));
     temp->data=malloc(data_size);
@@ -38,27 +36,22 @@ void generic_ll_insert_head(void* data, int data_size)
     }
 
 
-    temp->next=head;
-
-    if(head==NULL)
-        tail=temp;
-    head=temp;
+    temp->next=(*head);
+    (*head)=temp;
 
 }
 
-void generic_ll_pop_head()
+void generic_ll_pop_head(node** head)
 {
-    if(head==NULL)
-        return head;
-    node* temp=head;
-    head=head->next;
-    if(head==NULL)
-        tail=NULL;
+    if((*head)==NULL)
+        return ;
+    node* temp=(*head);
+    (*head)=(*head)->next;
     free(temp);
 
 }
 
-void generic_ll_insert_tail(void* data, int data_size)
+void generic_ll_insert_tail(node** head,void* data, int data_size)
 {
     node* temp=malloc(sizeof(node));
     temp->data=malloc(data_size);
@@ -78,31 +71,36 @@ void generic_ll_insert_tail(void* data, int data_size)
     default:
         temp->type=string_t;
     }
-    if(tail!=NULL)
+
+    node* tail=(*head);
+    if(tail==NULL)
+    {
+        (*head)=temp;
+        return;
+    }
+    else
+    {
+        while(tail->next)
+        {
+            tail=tail->next;
+        }
         tail->next=temp;
-    else head=temp;
-    tail=temp;
+    }
 
 }
 
-void* generic_ll_get_head()
+void* generic_ll_get_head(node** head)
 {
-    if(head!=NULL)
-        return head->data;
-    else return NULL;
-}
-
-void* generic_ll_get_tail()
-{
-    if(tail!=NULL)
-        return tail->data;
+    if((*head)!=NULL)
+        return (*head)->data;
     else return NULL;
 }
 
 
-void generic_ll_print()
+
+void generic_ll_print(node** head)
 {
-    node* itr=head;
+    node* itr=(*head);
     while(itr)
     {
 

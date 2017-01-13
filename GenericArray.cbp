@@ -33,21 +33,10 @@
 			<Add option="-Wall" />
 			<Add option="-std=c++11" />
 		</Compiler>
-		<Unit filename="data_types.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="generic_array.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="generic_array1.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="generic_ll.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="generic_queue.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="data_types.h" />
+		<Unit filename="generic_array1.h" />
+		<Unit filename="generic_ll1.h" />
+		<Unit filename="generic_queue.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
