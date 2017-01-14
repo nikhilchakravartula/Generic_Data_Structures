@@ -1,5 +1,5 @@
-#ifndef GENERIC_LL1_H_INCLUDED
-#define GENERIC_LL1_H_INCLUDED
+#ifndef GENERIC_LL_H_INCLUDED
+#define GENERIC_LL_H_INCLUDED
 
 #include "data_types.h"
 typedef struct llnode
@@ -11,7 +11,11 @@ typedef struct llnode
 
 void generic_ll_intialise(node** head)
 {
-     (*head)=NULL;
+
+     //(*head)=NULL;
+     (*head)=malloc(sizeof(node));
+     (*head)->data=NULL;
+     (*head)->next=NULL;
 }
 
 //insert at a particular index in the array
@@ -43,7 +47,7 @@ void generic_ll_insert_head(node** head,void* data, int data_size)
 
 void generic_ll_pop_head(node** head)
 {
-    if((*head)==NULL)
+    if( (*head)->data==NULL)
         return ;
     node* temp=(*head);
     (*head)=(*head)->next;
@@ -73,27 +77,31 @@ void generic_ll_insert_tail(node** head,void* data, int data_size)
     }
 
     node* tail=(*head);
-    if(tail==NULL)
+    if(tail->data==NULL)
     {
+        temp->next=(*head);
         (*head)=temp;
         return;
     }
     else
     {
-        while(tail->next)
+        node* prev=tail;
+        while(tail->data)
         {
+            prev=tail;
             tail=tail->next;
         }
-        tail->next=temp;
+
+        prev->next=temp;
+        temp->next=tail;
+
     }
 
 }
 
 void* generic_ll_get_head(node** head)
 {
-    if((*head)!=NULL)
-        return (*head)->data;
-    else return NULL;
+    return (*head)->data;
 }
 
 
@@ -101,7 +109,7 @@ void* generic_ll_get_head(node** head)
 void generic_ll_print(node** head)
 {
     node* itr=(*head);
-    while(itr)
+    while(itr->data)
     {
 
         switch(itr->type)

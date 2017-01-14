@@ -1,5 +1,5 @@
-#ifndef GENERIC_ARRAY1_H_INCLUDED
-#define GENERIC_ARRAY1_H_INCLUDED
+#ifndef GENERIC_ARRAY_H_INCLUDED
+#define GENERIC_ARRAY_H_INCLUDED
 
 #include<stdio.h>
 #include<stdlib.h>

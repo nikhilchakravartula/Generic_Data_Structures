@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "generic_array.h"
 #include "generic_ll.h"
+#include "generic_queue.h"
 #include "data_types.h"
 void test_generic_array()
 {
@@ -66,8 +67,41 @@ void test_generic_ll()
 
 }
 
+void test_generic_queue()
+{
+    printf("\nTESTING GENERIC QUEUE\n");
+    Queue* queue;
+    generic_queue_initialise(&queue);
+    char ch='A';
+
+    for(int i=0; i<4; i++)
+    {
+        generic_queue_enqueue(&queue,&ch,sizeof(ch));
+        ch++;
+    }
+
+    int t=5;
+    for(int i=0; i<5; i++)
+    {
+        generic_queue_enqueue(&queue,&t,sizeof(t));
+        t++;
+    }
+    generic_queue_enqueue(&queue,&ch,sizeof(ch));
+
+    double d=5.6;
+    for(int i=2; i<4; i++)
+    {
+        generic_queue_enqueue(&queue,&d,sizeof(d));
+        d++;
+    }
+    generic_queue_dequeue(&queue);
+    generic_queue_dequeue(&queue);
+    generic_queue_dequeue(&queue);
+    generic_queue_print(&queue);
+
+}
 int main()
 {
-    test_generic_ll();
+    test_generic_queue();
     return 0;
 }
