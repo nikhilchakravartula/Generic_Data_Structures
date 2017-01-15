@@ -2,12 +2,6 @@
 #define GENERIC_LL_H_INCLUDED
 
 #include "data_types.h"
-typedef struct llnode
-{
-    void* data;
-    data_type_t type;
-    struct llnode* next;
-} node;
 
 void generic_ll_intialise(node** head)
 {
@@ -24,6 +18,7 @@ void generic_ll_insert_head(node** head,void* data, int data_size)
     node* temp=malloc(sizeof(node));
     temp->data=malloc(data_size);
     memcpy(temp->data,data,data_size);
+
     switch(data_size)
     {
     case sizeof(char):
@@ -35,14 +30,11 @@ void generic_ll_insert_head(node** head,void* data, int data_size)
     case sizeof(double):
         temp->type=double_t;
         break;
-    default:
-        temp->type=string_t;
     }
 
 
     temp->next=(*head);
     (*head)=temp;
-
 }
 
 void generic_ll_pop_head(node** head)
@@ -72,8 +64,6 @@ void generic_ll_insert_tail(node** head,void* data, int data_size)
     case sizeof(double):
         temp->type=double_t;
         break;
-    default:
-        temp->type=string_t;
     }
 
     node* tail=(*head);
@@ -123,16 +113,11 @@ void generic_ll_print(node** head)
         case double_t :
             printf("%f\n",*(double*)itr->data);
             break;
-        case string_t:
-            printf("%s\n",(char*)itr->data);
-            break;
 
         }
         itr=itr->next;
     }
 }
-
-
 
 
 #endif // GENERIC_LL1_H_INCLUDED

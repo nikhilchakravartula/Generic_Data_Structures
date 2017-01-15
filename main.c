@@ -4,6 +4,7 @@
 #include "generic_ll.h"
 #include "generic_queue.h"
 #include "data_types.h"
+#include "generic_hash_map.h"
 void test_generic_array()
 {
     printf("\nTESTING GENERIC ARRAY\n");
@@ -11,23 +12,23 @@ void test_generic_array()
     char ch='A';
     for(int i=0; i<4; i++)
     {
-        printf("here\n");
-        generic_array_insert(arr,&ch,i,sizeof(ch));
+        //printf("here\n");
+        generic_array_insert(arr,&ch,i,char_t,sizeof(char));
         ch++;
     }
 
     int t=5;
     for(int i=0; i<5; i++)
     {
-        generic_array_insert(arr,&t,i,sizeof(t));
+        generic_array_insert(arr,&t,i,int_t,sizeof(int));
         t++;
     }
-    generic_array_insert(arr,&ch,2,sizeof(ch));
+    generic_array_insert(arr,&ch,2,char_t,sizeof(char));
 
     double d=5.6;
     for(int i=2; i<4; i++)
     {
-        generic_array_insert(arr,&d,i,sizeof(d));
+        generic_array_insert(arr,&d,i,double_t,sizeof(double));
         d++;
     }
 
@@ -100,8 +101,19 @@ void test_generic_queue()
     generic_queue_print(&queue);
 
 }
+
+void test_generic_hash_map()
+{
+    generic_hash_map* my_hash;
+    generic_hash_map_initialise(&my_hash);
+    //printf("cursize in main %d",my_hash->hash_array->cursize);
+    char ch='A';
+    generic_hash_map_insert(&my_hash,&ch,char_t,sizeof(char));
+    generic_hash_map_insert(&my_hash,&ch,char_t,sizeof(char));
+    generic_hash_map_print(my_hash);
+}
 int main()
 {
-    test_generic_queue();
+    test_generic_hash_map();
     return 0;
 }
