@@ -1,6 +1,6 @@
 #ifndef DATA_TYPES_H_INCLUDED
 #define DATA_TYPES_H_INCLUDED
-
+#include<stdbool.h>
 
 typedef enum
 {

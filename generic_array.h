@@ -5,7 +5,7 @@
 #include<stdlib.h>
 #include "generic_ll.h"
 #include "data_types.h"
-#define MAX_SIZE 10000000
+
 
 
 void* generic_array_intialise(unsigned n,data_type_t type)

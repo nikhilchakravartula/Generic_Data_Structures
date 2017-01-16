@@ -57,4 +57,28 @@ void generic_hash_map_remove(generic_hash_map* my_hash,void* data,data_type_t ty
     }
 
 }
+
+bool generic_hash_map_present(generic_hash_map* my_hash,void* data,data_type_t type)
+{
+     switch(type)
+    {
+    case char_t:
+        ;
+        char char_value=get_char(data);
+        return generic_ll_present((&my_hash->hash_array->elements[char_value%HASH_MAP_SIZE]),data,type);
+        break;
+    case int_t:
+        ;
+        int int_value=get_int(data);
+            return generic_ll_present(& (my_hash->hash_array->elements[int_value%HASH_MAP_SIZE]),data,type);
+        break;
+    case double_t:
+        ;
+        double double_value=get_double(data);
+        return generic_ll_present(& (my_hash->hash_array->elements[ ( (int)double_value )%HASH_MAP_SIZE]),data,type);
+        break;
+
+
+    }
+}
 #endif // GENERIC_HASH_MAP_H_INCLUDED

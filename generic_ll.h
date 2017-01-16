@@ -119,6 +119,73 @@ void generic_ll_print(node** head)
     }
 }
 
+bool generic_ll_present(node** head,void* data,data_type_t type)
+{
+     node* ptr=(*head);
+
+
+    switch(type)
+    {
+
+    case char_t:
+
+        ;
+        char char_value=get_char(data);
+
+        while(ptr && ptr->data)
+        {
+
+            if(ptr->type==char_t)
+            {
+                if(char_value== get_char(ptr->data))
+                {
+
+                   return true;
+                }
+            }
+            ptr=ptr->next;
+        }
+
+        break;
+    case int_t:
+        ;
+        int int_value=get_int(data);
+        while(ptr && ptr->data)
+        {
+
+            if(ptr->type==int_t)
+            {
+                if(int_value== get_int(ptr->data))
+                {
+                   return true;
+                }
+            }
+
+            ptr=ptr->next;
+        }
+        break;
+    case double_t:
+        ;
+        double double_value=get_double(data);
+        while(ptr && ptr->data)
+        {
+
+            if(ptr->type==double_t)
+            {
+                if(double_value== get_double(ptr->data))
+                {
+                    return true;
+                }
+            }
+
+            ptr=ptr->next;
+        }
+        break;
+
+    }
+    return false;
+
+}
 void generic_ll_remove(node** head,void* data,data_type_t type)
 {
     node* ptr=(*head);

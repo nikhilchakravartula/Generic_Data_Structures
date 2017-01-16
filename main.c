@@ -76,9 +76,9 @@ void test_generic_ll()
     generic_ll_remove(&head,&ch,char_t);
     ch='E';
     generic_ll_remove(&head,&ch,char_t);
-    int te=6;
-    generic_ll_remove(&head,&te,int_t);
-    generic_ll_print(&head);
+    int te=5;
+    printf("%d",generic_ll_present(&head,&te,int_t));
+    //generic_ll_print(&head);
 
 }
 
@@ -158,8 +158,9 @@ void test_generic_hash_map()
     ch='A';
     generic_hash_map_remove(my_hash,&ch,char_t);
 
-    generic_hash_map_print(my_hash);
-
+//    generic_hash_map_print(my_hash);
+data='Z';
+    printf("%d",generic_hash_map_present(my_hash,&data,char_t));
 }
 int main()
 {
