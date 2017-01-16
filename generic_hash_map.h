@@ -17,13 +17,13 @@ void generic_hash_map_insert(generic_hash_map* arr,void* data,data_type_t type,i
     switch(type)
     {
     case char_t:
-        generic_array_insert( (arr)->hash_array,data,(*(char*)data)%HASH_MAP_SIZE,node_t,data_size);
+        generic_array_insert_ll( (arr)->hash_array,data,(*(char*)data)%HASH_MAP_SIZE,type);//,node_t),data_size);
         break;
     case int_t:
-        generic_array_insert( (arr)->hash_array,data,(*(int*)data)%HASH_MAP_SIZE,node_t,data_size);
+        generic_array_insert_ll( (arr)->hash_array,data,(*(int*)data)%HASH_MAP_SIZE,type);//node_t),data_size);
         break;
     case double_t:
-        generic_array_insert( (arr)->hash_array,data,( (int)(*(double*)data) )%HASH_MAP_SIZE,node_t,data_size);
+        generic_array_insert_ll( (arr)->hash_array,data,( (int)(*(double*)data) )%HASH_MAP_SIZE,type);//node_t);,data_size);
         break;
     }
 }

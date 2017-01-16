@@ -13,7 +13,7 @@ void test_generic_array()
     for(int i=0; i<4; i++)
     {
         //printf("here\n");
-        generic_array_insert(arr,&ch,i,char_t,sizeof(char));
+        generic_array_insert(arr,&ch,i,char_t);
         ch++;
     }
     ch='A';
@@ -26,19 +26,19 @@ void test_generic_array()
     int t=5;
     for(int i=0; i<5; i++)
     {
-        generic_array_insert(arr,&t,i,int_t,sizeof(int));
+        generic_array_insert(arr,&t,i,int_t);
         t++;
     }
-    generic_array_insert(arr,&ch,2,char_t,sizeof(char));
+    generic_array_insert(arr,&ch,2,char_t);
 
     double d=5.6;
     for(int i=2; i<4; i++)
     {
-        generic_array_insert(arr,&d,i,double_t,sizeof(double));
+        generic_array_insert(arr,&d,i,double_t);
         d++;
     }
     my_data_struct s={'C',15,2.25};
-    generic_array_insert(arr,&s,5,my_data_struct_t,sizeof(my_data_struct));
+    generic_array_insert(arr,&s,5,my_data_struct_t);
     generic_array_print(arr,other_t);
 
 }
@@ -50,22 +50,22 @@ void test_generic_ll()
     char ch='A';
     for(int i=0; i<4; i++)
     {
-        generic_ll_insert_head(&head,&ch,sizeof(ch));
+        generic_ll_insert_head(&head,&ch,char_t);
         ch++;
     }
 
     int t=5;
     for(int i=0; i<5; i++)
     {
-        generic_ll_insert_head(&head,&t,sizeof(t));
+        generic_ll_insert_head(&head,&t,int_t);
         t++;
     }
-    generic_ll_insert_tail(&head,&ch,sizeof(ch));
+    //generic_ll_insert_tail(&head,&ch,int_t,sizeof(ch));
 
     double d=5.6;
     for(int i=2; i<4; i++)
     {
-        generic_ll_insert_tail(&head,&d,sizeof(d));
+        generic_ll_insert_tail(&head,&d,double_t);
         d++;
     }
     generic_ll_pop_head(&head);
@@ -92,33 +92,36 @@ void test_generic_queue()
 
     for(int i=0; i<4; i++)
     {
-        generic_queue_enqueue(&queue,&ch,sizeof(ch));
+        generic_queue_enqueue(&queue,&ch,char_t);
         ch++;
     }
 
     int t=5;
     for(int i=0; i<5; i++)
     {
-        generic_queue_enqueue(&queue,&t,sizeof(t));
+        generic_queue_enqueue(&queue,&t,int_t);
         t++;
     }
-    generic_queue_enqueue(&queue,&ch,sizeof(ch));
+
+    generic_queue_enqueue(&queue,&ch,char_t);
 
     double d=5.6;
     for(int i=2; i<4; i++)
     {
-        generic_queue_enqueue(&queue,&d,sizeof(d));
+        generic_queue_enqueue(&queue,&d,double_t);
         d++;
     }
     generic_queue_dequeue(&queue);
     generic_queue_dequeue(&queue);
     generic_queue_dequeue(&queue);
+
     generic_queue_print(&queue);
 
 }
 
 void test_generic_hash_map()
 {
+    printf("\nTESTING GENERIC HASH MAP\n");
     generic_hash_map* my_hash;
     generic_hash_map_initialise(&my_hash);
     //printf("cursize in main %d",my_hash->hash_array->cursize);
@@ -165,6 +168,9 @@ data='Z';
 }
 int main()
 {
+    test_generic_array();
+    test_generic_ll();
     test_generic_queue();
+    test_generic_hash_map();
     return 0;
 }

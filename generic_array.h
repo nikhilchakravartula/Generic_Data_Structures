@@ -22,11 +22,10 @@ void* generic_array_intialise(unsigned n,data_type_t type)
 }
 
 //insert at a particular  in the array
-void generic_array_insert(void* arr,void* data, int index, data_type_t type,int data_size)
+void generic_array_insert(void* arr,void* data, int index, data_type_t type)
 {
     generic_array* garr=(generic_array*)arr;
-    if(type!=node_t)
-    {
+    int data_size=get_size(type);
         int temp=garr->cursize;
         while(temp!=index)
         {
@@ -38,26 +37,28 @@ void generic_array_insert(void* arr,void* data, int index, data_type_t type,int 
         }
         garr->elements[index].data=malloc(data_size);
         memcpy(garr->elements[index].data,data,data_size);
-    }
-    else
-    {
-        //printf("index=%d",index);
-        if((garr)->elements[index].data==NULL)
-        {
-
-            //(garr)->elements[index].data=malloc(get_size(type));
-            generic_ll_intialise(  &((garr)->elements[index].data)  );
-        }
-
-        generic_ll_insert_head(  (node**)&((garr)->elements[index].data ),data, data_size);
-
-    }
     (garr)->elements[index].type=type;
     (garr)->cursize++;
 
 
 }
 
+void generic_array_insert_ll(void* arr,void* data,int index,data_type_t type)
+{
+
+    generic_array* garr=(generic_array*)arr;
+    int data_size=get_size(type);
+     if((garr)->elements[index].data==NULL)
+        {
+
+            //(garr)->elements[index].data=malloc(get_size(type));
+            generic_ll_intialise(  &((garr)->elements[index].data)  );
+        }
+
+        generic_ll_insert_head(  (node**)&((garr)->elements[index].data ),data, type);
+    garr->elements[index].type=type;
+    garr->cursize++;
+}
 void* generic_array_get(void* arr,int index)
 {
     generic_array* garr=(generic_array*)arr;

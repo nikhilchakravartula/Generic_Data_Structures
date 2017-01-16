@@ -10,16 +10,18 @@ void generic_ll_intialise(node** head)
     (*head)=malloc(sizeof(node));
     (*head)->data=NULL;
     (*head)->next=NULL;
+    (*head)->type=other_t;
 }
 
 //insert at a particular index in the array
-void generic_ll_insert_head(node** head,void* data, int data_size)
+void generic_ll_insert_head(node** head,void* data, data_type_t type)
 {
+    int data_size=get_size(type);
     node* temp=malloc(sizeof(node));
     temp->data=malloc(data_size);
     memcpy(temp->data,data,data_size);
 
-    switch(data_size)
+   /* switch(data_size)
     {
     case sizeof(char):
         temp->type=char_t;
@@ -31,7 +33,8 @@ void generic_ll_insert_head(node** head,void* data, int data_size)
         temp->type=double_t;
         break;
     }
-
+*/
+temp->type=type;
 
     temp->next=(*head);
     (*head)=temp;
@@ -47,8 +50,9 @@ void generic_ll_pop_head(node** head)
 
 }
 
-void generic_ll_insert_tail(node** head,void* data, int data_size)
+void generic_ll_insert_tail(node** head,void* data,data_type_t type)
 {
+    int data_size=get_size(type);
     node* temp=malloc(sizeof(node));
     temp->data=malloc(data_size);
     memcpy(temp->data,data,data_size);

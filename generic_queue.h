@@ -11,11 +11,12 @@ void generic_queue_initialise(Queue** q)
     (*q)->queue_head=malloc(sizeof(node));
     (*q)->queue_head->data=NULL;
     (*q)->queue_head->next=NULL;
+    (*q)->queue_head->type=other_t;
 }
 
-void generic_queue_enqueue(Queue** q,void* data,int data_size)
+void generic_queue_enqueue(Queue** q,void* data,data_type_t type)
 {
-    generic_ll_insert_head(&(*q)->queue_head,data,data_size);
+    generic_ll_insert_head(&(*q)->queue_head,data,type);
 }
 
 void generic_queue_dequeue(Queue** q)
