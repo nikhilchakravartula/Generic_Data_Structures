@@ -6,10 +6,10 @@
 void generic_ll_intialise(node** head)
 {
 
-     //(*head)=NULL;
-     (*head)=malloc(sizeof(node));
-     (*head)->data=NULL;
-     (*head)->next=NULL;
+    //(*head)=NULL;
+    (*head)=malloc(sizeof(node));
+    (*head)->data=NULL;
+    (*head)->next=NULL;
 }
 
 //insert at a particular index in the array
@@ -105,17 +105,107 @@ void generic_ll_print(node** head)
         switch(itr->type)
         {
         case char_t :
-            printf("%c\n",*(char*)(itr->data));
+            printf("%c\t",*(char*)(itr->data));
             break;
         case int_t :
-            printf("%d\n",*(int*)itr->data);
+            printf("%d\t",*(int*)itr->data);
             break;
         case double_t :
-            printf("%f\n",*(double*)itr->data);
+            printf("%f\t",*(double*)itr->data);
             break;
 
         }
         itr=itr->next;
+    }
+}
+
+void generic_ll_remove(node** head,void* data,data_type_t type)
+{
+    node* ptr=(*head);
+    node* prev=NULL;
+    node* temp;
+
+    switch(type)
+    {
+
+    case char_t:
+
+        ;
+        char char_value=get_char(data);
+
+        while(ptr && ptr->data)
+        {
+
+            if(ptr->type==char_t)
+            {
+                if(char_value== get_char(ptr->data))
+                {
+                    if(prev==NULL)
+                    {
+                        (*head)=(*head)->next;
+                        free(ptr);
+                        return;
+                    }
+                    prev->next=ptr->next;
+                    free(ptr);
+                    break;
+                }
+            }
+            prev=ptr;
+            ptr=ptr->next;
+        }
+        break;
+    case int_t:
+        ;
+        int int_value=get_int(data);
+        while(ptr && ptr->data)
+        {
+
+            if(ptr->type==int_t)
+            {
+                if(int_value== get_int(ptr->data))
+                {
+                    if(prev==NULL)
+                    {
+                        (*head)=(*head)->next;
+                        free(ptr);
+                        return;
+                    }
+                    prev->next=ptr->next;
+                    free(ptr);
+                    break;
+                }
+            }
+            prev=ptr;
+            ptr=ptr->next;
+        }
+        break;
+    case double_t:
+        ;
+        double double_value=get_double(data);
+        while(ptr && ptr->data)
+        {
+
+            if(ptr->type==double_t)
+            {
+                if(double_value== get_double(ptr->data))
+                {
+                    if(prev==NULL)
+                    {
+                        (*head)=(*head)->next;
+                        free(ptr);
+                        return;
+                    }
+                    prev->next=ptr->next;
+                    free(ptr);
+                    break;
+                }
+            }
+            prev=ptr;
+            ptr=ptr->next;
+        }
+        break;
+
     }
 }
 

@@ -16,7 +16,13 @@ void test_generic_array()
         generic_array_insert(arr,&ch,i,char_t,sizeof(char));
         ch++;
     }
-
+    ch='A';
+    for(int i=0; i<4; i++)
+    {
+        //printf("here\n");
+        generic_array_remove_index(arr,i,char_t,sizeof(char));
+        ch++;
+    }
     int t=5;
     for(int i=0; i<5; i++)
     {
@@ -32,7 +38,7 @@ void test_generic_array()
         d++;
     }
 
-    generic_array_print(arr);
+    generic_array_print(arr,other_t);
 
 }
 void test_generic_ll()
@@ -64,6 +70,14 @@ void test_generic_ll()
     generic_ll_pop_head(&head);
     generic_ll_pop_head(&head);
     generic_ll_pop_head(&head);
+    ch='B';
+    generic_ll_remove(&head,&ch,char_t);
+    ch='A';
+    generic_ll_remove(&head,&ch,char_t);
+    ch='E';
+    generic_ll_remove(&head,&ch,char_t);
+    int te=6;
+    generic_ll_remove(&head,&te,int_t);
     generic_ll_print(&head);
 
 }
@@ -108,9 +122,44 @@ void test_generic_hash_map()
     generic_hash_map_initialise(&my_hash);
     //printf("cursize in main %d",my_hash->hash_array->cursize);
     char ch='A';
-    generic_hash_map_insert(&my_hash,&ch,char_t,sizeof(char));
-    generic_hash_map_insert(&my_hash,&ch,char_t,sizeof(char));
+    for(int i=0; i<4; i++)
+    {
+        generic_hash_map_insert(my_hash,&ch,char_t,sizeof(ch));
+        ch++;
+    }
+
+    for(int i=0; i<4; i++)
+    {
+        generic_hash_map_insert(my_hash,&ch,char_t,sizeof(ch));
+        ch++;
+    }
+
+    int t=5;
+    for(int i=0; i<5; i++)
+    {
+        generic_hash_map_insert(my_hash,&t,int_t,sizeof(t));
+        t++;
+    }
+    int te=66;
+    generic_hash_map_insert(my_hash,&ch,char_t,sizeof(ch));
+    generic_hash_map_insert(my_hash,&te,int_t,sizeof(te));
+
+    double d=5.6;
+    for(int i=2; i<4; i++)
+    {
+        generic_hash_map_insert(my_hash,&d,double_t,sizeof(d));
+        d++;
+    }
+    char data='B';
+    generic_hash_map_remove(my_hash,&data,char_t);
+    int v=6;
+    generic_hash_map_remove(my_hash,&v,int_t);
+    v=66;
+    ch='A';
+    generic_hash_map_remove(my_hash,&ch,char_t);
+
     generic_hash_map_print(my_hash);
+
 }
 int main()
 {

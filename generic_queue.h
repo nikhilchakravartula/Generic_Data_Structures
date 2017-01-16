@@ -4,7 +4,7 @@
 typedef struct
 {
     node* queue_head;
-}Queue;
+} Queue;
 void generic_queue_initialise(Queue** q)
 {
     (*q)=malloc(sizeof(Queue));
