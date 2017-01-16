@@ -8,6 +8,7 @@ typedef enum
     int_t,
     double_t,
     node_t,
+    my_data_struct_t,
     other_t
 } data_type_t;
 
@@ -55,4 +56,10 @@ node* get_node(void* data)
     return  (node*)data;
 }
 
+typedef struct{
+
+char ch;
+int in;
+double db;
+}my_data_struct;
 #endif // DATA_TYPES_H_INCLUDED

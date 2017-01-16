@@ -77,6 +77,8 @@ int get_size(data_type_t type)
         return sizeof(double);
     case node_t:
         return sizeof(node);
+    case my_data_struct_t:
+        return sizeof(my_data_struct);
     }
 
 }
@@ -99,6 +101,9 @@ void generic_array_print(void* arr,data_type_t type)
                 break;
             case double_t :
                 printf("%f\n",*(double*)(garr->elements[i].data));
+                break;
+            case my_data_struct_t:
+                printf("%c %d %f\n", (( my_data_struct*)(garr->elements[i].data))->ch,( (my_data_struct*)(garr->elements[i].data))->in,( (my_data_struct*)(garr->elements[i].data) )->db );
                 break;
 
 

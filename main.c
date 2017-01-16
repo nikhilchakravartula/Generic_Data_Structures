@@ -37,7 +37,8 @@ void test_generic_array()
         generic_array_insert(arr,&d,i,double_t,sizeof(double));
         d++;
     }
-
+    my_data_struct s={'C',15,2.25};
+    generic_array_insert(arr,&s,5,my_data_struct_t,sizeof(my_data_struct));
     generic_array_print(arr,other_t);
 
 }
@@ -78,7 +79,7 @@ void test_generic_ll()
     generic_ll_remove(&head,&ch,char_t);
     int te=5;
     printf("%d",generic_ll_present(&head,&te,int_t));
-    //generic_ll_print(&head);
+    generic_ll_print(&head);
 
 }
 
@@ -158,12 +159,12 @@ void test_generic_hash_map()
     ch='A';
     generic_hash_map_remove(my_hash,&ch,char_t);
 
-//    generic_hash_map_print(my_hash);
+  generic_hash_map_print(my_hash);
 data='Z';
     printf("%d",generic_hash_map_present(my_hash,&data,char_t));
 }
 int main()
 {
-    test_generic_hash_map();
+    test_generic_queue();
     return 0;
 }
